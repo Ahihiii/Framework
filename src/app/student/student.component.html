@@ -1,0 +1,71 @@
+<p>student works!</p>
+<div class="container">
+    <p class="color-pink">Danh sách sv</p>
+    <p>{{title}}</p>
+  
+    <div>
+      <label for="searchInput">Search</label>
+      <input type="text" id="searchInput" class="form-control" (input)="onSearch($event)">
+  
+      <p>{{searchValue}}</p>
+    </div>
+  
+    <table class="table table-border table-hover">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên</th>
+          <th>Tuổi</th>
+          <th>SĐT</th>
+          <th>Email</th>
+          <th>Avatar</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+  
+      <tbody *ngIf="students.length > 0">
+        <tr *ngFor="let student of filterStudents">
+          <td>{{student.id}}</td>
+          <td>{{student.name}}</td>
+          <td>{{student.age}}</td>
+          <td>{{student.phone}}</td>
+          <td>{{student.email}}</td>
+          <td><img src="{{student.img}}" width="150px" ></td>
+          <td>
+            <button  (click)="onEdit(student)" class="btn btn-primary">Sửa</button>
+            <button  (click)="remove(student.id)" class="btn btn-danger">Xóa</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+  
+    <form> 
+      <h2>Thêm</h2>
+      <div class="mb-3">
+        <label for="name" class="form-label">Tên</label>
+        <input type="text" class="form-control" id="name" (input)="onChangeInput($event, 'name')" [value]="newUser.name">
+      </div>
+
+      <div class="mb-3">
+        <label for="age" class="form-label">Tuổi</label>
+        <input type="text" class="form-control" id="age" (input)="onChangeInput($event, 'age')" [value]="newUser.age">
+      </div>
+  
+      <div class="mb-3">
+        <label for="phone" class="form-label">Điện thoại</label>
+        <input type="text" class="form-control" id="phone" (input)="onChangeInput($event, 'phone')" [value]="newUser.phone">
+      </div>
+  
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" (input)="onChangeInput($event, 'email')" [value]="newUser.email">
+      </div>
+  
+      <div class="mb-3">
+        <label for="img" class="form-label">Ảnh</label>
+        <input type="text" class="form-control" id="img" (input)="onChangeInput($event, 'img')" [value]="newUser.img">
+      </div>
+      <button type="button" class="btn btn-primary" [disabled]="!onValidate(newUser)" (click)="onSubmit">Submit</button>
+    </form>
+  </div>

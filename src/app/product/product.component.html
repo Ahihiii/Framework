@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form #productForm="ngForm" class="form" (submit)="onSubmit(productForm)">
+                <p>{{productForm.value | json}}</p>
+
+                <p>{{newProduct | json}}</p>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" [(ngModel)]="newProduct.name" placeholder="name">
+                </div> <br>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" name="price" [(ngModel)]="newProduct.price" placeholder="price">
+                </div> <br>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" name="desc" [(ngModel)]="newProduct.desc" placeholder="desc">
+                </div> <br>
+
+                
+            </form>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Tên</th>
+                        <th>Giá</th>
+                        <th>Mô tả</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>PS</td>
+                        <td>1</td>
+                        <td>SONY</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
