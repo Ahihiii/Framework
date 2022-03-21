@@ -1,4 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+// import { type } from 'os';
+import { ProductService } from '../services/product.service';
+
+type PRODUCT_TYPE = {
+  id: number,
+  name: string,
+  desc: string,
+  price: number
+}
 
 @Component({
   selector: 'app-product',
@@ -7,9 +16,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductComponent implements OnInit {
 
-  constructor() { }
+  products:any;
+  constructor(private ps: ProductService) { }
 
   ngOnInit(): void {
+    this.ps.getProducts().subscribe(data => {
+      this.products = data;
+      console.log(this.products);
+    })
   }
 
   product = [
@@ -38,5 +52,7 @@ export class ProductComponent implements OnInit {
       desc: ''
     }
   }
+
+  
 
 }

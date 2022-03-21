@@ -9,6 +9,11 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { ProductComponent } from './product/product.component';
 import { StudentComponent } from './student/student.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductFormComponent } from './product-form/product-form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductService } from './services/product.service';
+
 
 @NgModule({
   declarations: [
@@ -16,15 +21,18 @@ import { StudentComponent } from './student/student.component';
     LoginComponent,
     RegisterComponent,
     ProductComponent,
-    StudentComponent
+    StudentComponent,
+    ProductDetailComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <form #productForm="ngForm" class="form" (submit)="onSubmit(productForm)">
+            <!-- <form #productForm="ngForm" class="form" (submit)="onSubmit(productForm)">
                 <p>{{productForm.value | json}}</p>
 
                 <p>{{newProduct | json}}</p>
@@ -18,7 +18,9 @@
                 </div> <br>
 
                 
-            </form>
+            </form> -->
+
+            
 
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
@@ -29,17 +31,25 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Tên</th>
                         <th>Giá</th>
                         <th>Mô tả</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody *ngFor="let product of products">
                     <tr>
-                        <td>PS</td>
-                        <td>1</td>
-                        <td>SONY</td>
+                        <td>{{product.id}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.price}}</td>
+                        <td>{{product.desc}}</td>
+                        <td>
+                            <input [routerLink]="['/product', product.id]" type="button" class="btn btn-primary" value="Xem chi tiết">
+                            <input [routerLink]="['/product', product.id, 'edit']" type="button" class="btn btn-success" value="Sửa">
+                            <input type="button" class="btn btn-danger" value="Xóa">
+                        </td>
                     </tr>
                 </tbody>
             </table>
