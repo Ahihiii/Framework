@@ -20,9 +20,13 @@ export class ProductComponent implements OnInit {
   constructor(private ps: ProductService) { }
 
   ngOnInit(): void {
+    this.onGetList();
+  }
+
+  onGetList() {
     this.ps.getProducts().subscribe(data => {
       this.products = data;
-      console.log(this.products);
+    
     })
   }
 
@@ -41,18 +45,15 @@ export class ProductComponent implements OnInit {
   }
 
   onSubmit(product :any){
-
-    product.push(this.newProduct);
-
-    console.log(this.newProduct);
-
-    this.newProduct = {
-      name: '',
-      price: 0,
-      desc: ''
-    }
+    console.log(this.product);
   }
 
-  
+  onDelete(id: any) {
+    if(id) {
+      this.ps.deleteProduct(id).subscribe(data => {
+        this.onGetList();
+      })
+    }
+  }  
 
 }

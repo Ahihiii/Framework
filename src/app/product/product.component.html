@@ -22,14 +22,19 @@
 
             
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
-            </div>
+            </div> -->
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-12">
+            <a routerLink="/product/create">
+                <button class="btn btn-primary">
+                  Tạo mới
+                </button>
+              </a>
             <table class="table table-hover">
-                <thead>
+                <thead class="table table-primary">
                     <tr>
                         <th>ID</th>
                         <th>Tên</th>
@@ -48,7 +53,7 @@
                         <td>
                             <input [routerLink]="['/product', product.id]" type="button" class="btn btn-primary" value="Xem chi tiết">
                             <input [routerLink]="['/product', product.id, 'edit']" type="button" class="btn btn-success" value="Sửa">
-                            <input type="button" class="btn btn-danger" value="Xóa">
+                            <input type="button" (click)="onDelete(product.id)" class="btn btn-danger" value="Xóa">
                         </td>
                     </tr>
                 </tbody>

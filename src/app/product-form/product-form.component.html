@@ -2,8 +2,7 @@
      <h1 *ngIf="id">Cập nhật sản phẩm {{productDetail.name}}</h1>
      <h1 *ngIf="id === undefined">Thêm mới sản phẩm</h1>
 
-
-
+     <p>{{productForm.form.invalid}}</p>
 
 <form #productForm="ngForm" (ngSubmit)="onUpdate(productForm.value)">
     
@@ -12,16 +11,44 @@
     </div>
 
     <div class="form-group">
-    <input type="text" placeholder="Tên" class="form-control" name="name" [(ngModel)]="productDetail.name">    
-    </div>
-    
-    <div class="form-group">
-    <input type="number" placeholder="Giá" class="form-control" name="price" [(ngModel)]="productDetail.price">
-    </div>
-    
-    <div class="form-group">
-    <input type="text" placeholder="Mô tả" class="form-control" name="desc" [(ngModel)]="productDetail.desc">
+    <input type="text" placeholder="Tên" class="form-control" name="name" [(ngModel)]="productDetail.name" required #name="ngModel">    
     </div>
 
-    <button class="btn btn-primary">Submit</button>
+    <div class="form-group">
+    <input type="number" placeholder="Giá" class="form-control" name="price" [(ngModel)]="productDetail.price" min="1" #price="ngModel">
+    </div>
+
+    <div class="form-group">
+    <input type="text" placeholder="Mô tả" class="form-control" name="desc" [(ngModel)]="productDetail.desc" minlength="5" #desc="ngModel">
+
+    
+
+    
+    <p>{{name.errors | json}}</p>   
+    <div *ngIf="productForm.form.dirty" style="color: red">
+      <div *ngIf="name.errors?.['required']">
+        Tên sp bắt buộc nhập
+      </div>
+      <div *ngIf="name.errors?.['minlength']">
+        Tên sp phải từ 6 ký tự trở lên
+      </div>
+      <div *ngIf="desc.errors?.['required']">
+        Mô tả bắt buộc nhập
+      </div>
+      <div *ngIf="desc.errors?.['minlength']">
+        Mô tả phải từ 6 ký tự trở lên
+      </div>
+      <div *ngIf="price.errors?.['min']">
+        Giá phải lớn hơn 0
+      </div>
+        </div>  
+
+
+          <div>
+    <button class="btn btn-primary" [disabled]="productForm.form.invalid">Submit</button>
+    </div>
+</div>
+
+    
+    
 </form>
