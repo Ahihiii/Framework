@@ -4,25 +4,29 @@
       "id": 1,
       "name": "Ahihii123",
       "price": 100,
-      "desc": "Ahuhuu"
+      "desc": "Ahuhuu",
+      "status": 0
     },
     {
       "id": 2,
       "name": "123",
       "price": 123,
-      "desc": "123"
+      "desc": "123",
+      "status": 1
     },
     {
       "name": "",
       "price": 0,
       "desc": "",
-      "id": 3
+      "id": 3,
+      "status": 1
     },
     {
       "id": 5,
       "name": "123",
       "price": 0,
-      "desc": ""
+      "desc": "",
+      "status": 1
     }
   ]
 }

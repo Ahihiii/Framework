@@ -16,6 +16,10 @@ import { ProductService } from './services/product.service';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ShowValidateComponent } from './components/show-validate/show-validate.component';
+import { ProductNameComponent } from './components/product-name/product-name.component';
+import { StatusComponent } from './components/status/status.component';
 
 
 @NgModule({
@@ -29,14 +33,18 @@ import { FooterComponent } from './footer/footer.component';
     ProductFormComponent,
     LayoutComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ShowValidateComponent,
+    ProductNameComponent,
+    StatusComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

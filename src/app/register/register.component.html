@@ -1,1 +1,47 @@
-<p>register works!</p>
+<p>{{registerForm.get('username')?.errors | json}}</p>
+
+<form [formGroup]="registerForm">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input class="form-control" type="text" formControlName="username">
+        <app-show-validate
+            [formField]="registerForm.get('username')"
+            key="Username"
+        ></app-show-validate>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" formControlName="password">
+        <app-show-validate
+            [formField]="registerForm.get('password')"
+            key="Password"
+        ></app-show-validate>
+    </div>
+
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control" type="text" formControlName="name">
+        <app-show-validate
+            [formField]="registerForm.get('name')"
+            key="Name"
+        ></app-show-validate>
+    </div>
+
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" type="text" formControlName="email">
+
+        <app-show-validate
+            [formField]="registerForm.get('email')"
+            key="Email"
+        ></app-show-validate>
+    </div>
+
+
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

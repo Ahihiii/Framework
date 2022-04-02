@@ -25,6 +25,8 @@
             <!-- <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
             </div> -->
+
+            <p>{{newProduct | json}}</p>
         </div>
 
         <div class="col-md-12">
@@ -40,6 +42,7 @@
                         <th>Tên</th>
                         <th>Giá</th>
                         <th>Mô tả</th>
+                        <th>Trạng thái</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -47,9 +50,18 @@
                 <tbody *ngFor="let product of products">
                     <tr>
                         <td>{{product.id}}</td>
-                        <td>{{product.name}}</td>
+                        <!-- <td>{{product.name}}</td> -->
+                        <td>
+                            <app-product-name
+                            [name]="product.name"
+                            ></app-product-name>
+                        </td>
                         <td>{{product.price}}</td>
                         <td>{{product.desc}}</td>
+                        <td>
+                            <app-status [status]="product.status" (changeStatus)="parentChangeStatus($event, product.id)"></app-status>
+                        </td>
+                        
                         <td>
                             <input [routerLink]="['/product', product.id]" type="button" class="btn btn-primary" value="Xem chi tiết">
                             <input [routerLink]="['/product', product.id, 'edit']" type="button" class="btn btn-success" value="Sửa">
